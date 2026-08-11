@@ -52,37 +52,53 @@
   <style>
     body { cursor: none; }
     
-    /* Glowing Aura Magnetic Cursor */
+    /* Custom Cursor Styling - Disabled Entirely on Mobile/Touch Devices */
+    @media (hover: hover) and (pointer: fine) {
+      body { cursor: none; }
+      #cursor-dot, #cursor-outline { display: block; }
+    }
+    @media (hover: none) or (pointer: coarse) {
+      body { cursor: auto !important; }
+      #cursor-dot, #cursor-outline { display: none !important; }
+    }
+
     #cursor-dot {
       pointer-events: none;
       position: fixed;
       top: 0; left: 0;
-      width: 10px; height: 10px;
-      background: #d4af37;
-      box-shadow: 0 0 12px #d4af37, 0 0 20px #166534;
+      width: 6px; height: 6px;
+      background-color: #d4af37;
       border-radius: 50%;
       z-index: 9999;
       transform: translate(-50%, -50%);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
     }
     #cursor-outline {
       pointer-events: none;
       position: fixed;
       top: 0; left: 0;
-      width: 48px; height: 48px;
-      border: 1.5px solid rgba(212, 175, 55, 0.5);
-      background: rgba(22, 101, 52, 0.08);
-      backdrop-filter: blur(2px);
+      width: 36px; height: 36px;
+      border: 1px solid rgba(212, 175, 55, 0.4);
       border-radius: 50%;
       z-index: 9998;
       transform: translate(-50%, -50%);
-      transition: width 0.25s, height 0.25s, background-color 0.25s, border-color 0.25s;
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                  height 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                  background-color 0.3s ease, 
+                  border-color 0.3s ease;
     }
+
+    /* Slick Magnetic Hover State on Desktop */
     .cursor-active #cursor-outline {
-      width: 80px;
-      height: 80px;
-      background-color: rgba(212, 175, 55, 0.15);
+      width: 64px;
+      height: 64px;
+      background-color: rgba(212, 175, 55, 0.12);
       border-color: #d4af37;
-      box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+      backdrop-filter: blur(2px);
+    }
+    .cursor-active #cursor-dot {
+      transform: translate(-50%, -50%) scale(1.8);
+      background-color: #ffffff;
     }
 
     /* Swiper Bullets */
@@ -848,20 +864,30 @@
   <script src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
   
   <script>
-    // 1. Glowing Magnetic Cursor Logic
+   // 1. Sleek Desktop Cursor Logic (Bypassed on Touch/Mobile Screens)
     const dot = document.getElementById('cursor-dot');
     const outline = document.getElementById('cursor-outline');
 
-    window.addEventListener('mousemove', (e) => {
-      dot.style.left = `${e.clientX}px`;
-      dot.style.top = `${e.clientY}px`;
-      gsap.to(outline, { x: e.clientX, y: e.clientY, duration: 0.18, ease: 'power2.out' });
-    });
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      window.addEventListener('mousemove', (e) => {
+        dot.style.left = `${e.clientX}px`;
+        dot.style.top = `${e.clientY}px`;
+        
+        // Fluid inertia lag using GSAP
+        gsap.to(outline, { 
+          x: e.clientX, 
+          y: e.clientY, 
+          duration: 0.2, 
+          ease: 'power2.out' 
+        });
+      });
 
-    document.querySelectorAll('.hover-link, button, a').forEach(el => {
-      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-active'));
-      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
-    });
+      // Expand ring when hovering interactive elements
+      document.querySelectorAll('.hover-link, button, a, .step-btn, .project-card').forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-active'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
+      });
+    }
 
     // 2. Swiper Hero Slider Initialization (Ken Burns Zoom + Fade)
     new Swiper('.heroSwiper', {
