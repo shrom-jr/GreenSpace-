@@ -48,17 +48,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-  <!-- Custom Cursor & Styling Upgrades -->
+  <!-- Custom Luxury Cursor & Styling Upgrades -->
   <style>
-    body { cursor: none; }
-    
-    /* Custom Cursor Styling - Disabled Entirely on Mobile/Touch Devices */
+    /* Custom Cursor Styling - Active on Desktop, Hidden on Mobile/Touch Devices */
     @media (hover: hover) and (pointer: fine) {
       body { cursor: none; }
-      #cursor-dot, #cursor-outline { display: block; }
+      #cursor-dot, #cursor-outline { display: flex; }
     }
     @media (hover: none) or (pointer: coarse) {
-      body { cursor: auto !important; }
+      body, a, button { cursor: auto !important; }
       #cursor-dot, #cursor-outline { display: none !important; }
     }
 
@@ -66,39 +64,42 @@
       pointer-events: none;
       position: fixed;
       top: 0; left: 0;
-      width: 6px; height: 6px;
-      background-color: #d4af37;
-      border-radius: 50%;
       z-index: 9999;
       transform: translate(-50%, -50%);
-      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+      transition: transform 0.2s ease-out;
     }
+
     #cursor-outline {
       pointer-events: none;
       position: fixed;
       top: 0; left: 0;
-      width: 36px; height: 36px;
-      border: 1px solid rgba(212, 175, 55, 0.4);
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(212, 175, 55, 0.45);
       border-radius: 50%;
+      background: rgba(22, 101, 52, 0.08);
+      backdrop-filter: blur(2px);
       z-index: 9998;
       transform: translate(-50%, -50%);
       transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
                   height 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
                   background-color 0.3s ease, 
-                  border-color 0.3s ease;
+                  border-color 0.3s ease,
+                  box-shadow 0.3s ease;
     }
 
-    /* Slick Magnetic Hover State on Desktop */
+    /* Interactive Hover Expansion */
     .cursor-active #cursor-outline {
-      width: 64px;
-      height: 64px;
-      background-color: rgba(212, 175, 55, 0.12);
+      width: 72px;
+      height: 72px;
+      background-color: rgba(212, 175, 55, 0.18);
       border-color: #d4af37;
-      backdrop-filter: blur(2px);
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.35);
+      backdrop-filter: blur(4px);
     }
+
     .cursor-active #cursor-dot {
-      transform: translate(-50%, -50%) scale(1.8);
-      background-color: #ffffff;
+      transform: translate(-50%, -50%) scale(1.3) rotate(45deg);
     }
 
     /* Swiper Bullets */
@@ -158,9 +159,15 @@
 </head>
 <body class="overflow-x-hidden selection:bg-brand-gold selection:text-black font-sans bg-brand-dark text-zinc-100">
 
-  <!-- Glowing Custom Cursor Elements -->
-  <div id="cursor-dot"></div>
-  <div id="cursor-outline"></div>
+  <!-- Luxury Starburst & Morphing Glass Cursor -->
+  <div id="cursor-dot">
+    <svg class="w-4 h-4 fill-brand-gold drop-shadow-[0_0_8px_rgba(212,175,55,0.8)]" viewBox="0 0 24 24">
+      <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z"/>
+    </svg>
+  </div>
+  <div id="cursor-outline" class="flex items-center justify-center font-bold text-[9px] uppercase tracking-widest text-brand-gold">
+    <span id="cursor-text" class="opacity-0 transition-opacity duration-200"></span>
+  </div>
 
 
   <!-- ================================================================= -->
@@ -186,7 +193,7 @@
     <div class="w-full px-4 sm:px-8 lg:px-12 py-2.5 flex items-center justify-between">
       
       <!-- Company Logo & Title (Locked to Far Left) -->
-      <a href="#" class="flex items-center space-x-3 hover-link group shrink-0">
+      <a href="#" class="flex items-center space-x-3 hover-link group shrink-0" data-cursor="HOME">
         <div class="h-10 md:h-12 w-auto flex items-center justify-center group-hover:scale-105 transition-transform">
           <img 
             src="images/logo.png" 
@@ -207,23 +214,23 @@
 
       <!-- Desktop Menu Links (Visible on Laptop/Desktop Screens) -->
       <nav class="hidden xl:flex items-center space-x-5 text-xs font-semibold tracking-[0.12em] uppercase text-zinc-200">
-        <a href="#about" class="hover:text-brand-gold transition hover-link">About Us</a>
+        <a href="#about" class="hover:text-brand-gold transition hover-link" data-cursor="ABOUT">About Us</a>
         <span class="text-zinc-700 font-light select-none">|</span>
-        <a href="#process" class="hover:text-brand-gold transition hover-link">5-Step Process</a>
+        <a href="#process" class="hover:text-brand-gold transition hover-link" data-cursor="STEPS">5-Step Process</a>
         <span class="text-zinc-700 font-light select-none">|</span>
-        <a href="#services" class="hover:text-brand-gold transition hover-link">Specialties</a>
+        <a href="#services" class="hover:text-brand-gold transition hover-link" data-cursor="SERVICES">Specialties</a>
         <span class="text-zinc-700 font-light select-none">|</span>
-        <a href="#transformations" class="hover:text-brand-gold transition hover-link">Showcase</a>
+        <a href="#transformations" class="hover:text-brand-gold transition hover-link" data-cursor="SHOWCASE">Showcase</a>
         <span class="text-zinc-700 font-light select-none">|</span>
-        <a href="#team" class="hover:text-brand-gold transition hover-link">Leadership</a>
+        <a href="#team" class="hover:text-brand-gold transition hover-link" data-cursor="TEAM">Leadership</a>
         <span class="text-zinc-700 font-light select-none">|</span>
-        <a href="#contact" class="hover:text-brand-gold transition hover-link">Contact</a>
+        <a href="#contact" class="hover:text-brand-gold transition hover-link" data-cursor="CONTACT">Contact</a>
       </nav>
 
       <!-- Right Side: WhatsApp Button + Mobile Hamburger Menu Toggle -->
       <div class="flex items-center space-x-4">
         <!-- WhatsApp Action Button -->
-        <a href="https://wa.me/9779851227074" target="_blank" class="hover-link hidden sm:inline-flex items-center space-x-2 px-5 py-2 text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-brand-gold to-amber-500 text-zinc-950 rounded-full shadow-md hover:brightness-110 transition duration-300 shrink-0">
+        <a href="https://wa.me/9779851227074" target="_blank" class="hover-link hidden sm:inline-flex items-center space-x-2 px-5 py-2 text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-brand-gold to-amber-500 text-zinc-950 rounded-full shadow-md hover:brightness-110 transition duration-300 shrink-0" data-cursor="CHAT">
           <i class="fa-brands fa-whatsapp text-sm"></i>
           <span>WhatsApp Us</span>
         </a>
@@ -277,10 +284,10 @@
               Custom modular kitchens, luxury wardrobes, TV units, and architectural parquet flooring crafted in Kathmandu.
             </p>
             <div class="hero-animate-btns flex flex-col sm:flex-row justify-center items-center gap-4">
-              <a href="#services" class="hover-link px-8 py-4 bg-gradient-to-r from-brand-gold to-amber-500 text-zinc-950 font-bold text-xs uppercase tracking-[0.2em] rounded-full shadow-2xl hover:brightness-110 transition">
+              <a href="#services" class="hover-link px-8 py-4 bg-gradient-to-r from-brand-gold to-amber-500 text-zinc-950 font-bold text-xs uppercase tracking-[0.2em] rounded-full shadow-2xl hover:brightness-110 transition" data-cursor="EXPLORE">
                 Explore Specialties
               </a>
-              <a href="tel:+9779851227074" class="hover-link px-8 py-4 bg-black/70 border border-brand-gold text-brand-gold font-bold text-xs uppercase tracking-[0.2em] rounded-full hover:bg-brand-gold hover:text-zinc-950 transition shadow-xl">
+              <a href="tel:+9779851227074" class="hover-link px-8 py-4 bg-black/70 border border-brand-gold text-brand-gold font-bold text-xs uppercase tracking-[0.2em] rounded-full hover:bg-brand-gold hover:text-zinc-950 transition shadow-xl" data-cursor="CALL">
                 Call +977 9851227074
               </a>
             </div>
@@ -303,7 +310,7 @@
               German & Italian hardware fittings, acrylic finishes, granite counter-tops, and smart storage baskets.
             </p>
             <div class="hero-animate-btns flex justify-center">
-              <a href="#contact" class="hover-link inline-block px-8 py-4 bg-white text-zinc-950 font-bold text-xs uppercase tracking-[0.2em] rounded-full hover:bg-brand-gold transition shadow-2xl">
+              <a href="#contact" class="hover-link inline-block px-8 py-4 bg-white text-zinc-950 font-bold text-xs uppercase tracking-[0.2em] rounded-full hover:bg-brand-gold transition shadow-2xl" data-cursor="BOOK">
                 Book Free Site Measurement
               </a>
             </div>
@@ -326,7 +333,7 @@
               Sliding glass wardrobes, upholstered headboards, hydraulic storage beds, and ambient profile lighting.
             </p>
             <div class="hero-animate-btns flex justify-center">
-              <a href="#process" class="hover-link inline-block px-8 py-4 bg-gradient-to-r from-brand-gold to-amber-500 text-zinc-950 font-bold text-xs uppercase tracking-[0.2em] rounded-full hover:brightness-110 transition shadow-2xl">
+              <a href="#process" class="hover-link inline-block px-8 py-4 bg-gradient-to-r from-brand-gold to-amber-500 text-zinc-950 font-bold text-xs uppercase tracking-[0.2em] rounded-full hover:brightness-110 transition shadow-2xl" data-cursor="PROCESS">
                 See How We Work
               </a>
             </div>
@@ -349,7 +356,7 @@
               Water-resistant laminate parquet, gypsum board false ceilings, and customized wall louvers.
             </p>
             <div class="hero-animate-btns flex justify-center">
-              <a href="#contact" class="hover-link inline-block px-8 py-4 bg-white text-zinc-950 font-bold text-xs uppercase tracking-[0.2em] rounded-full hover:bg-brand-gold transition shadow-2xl">
+              <a href="#contact" class="hover-link inline-block px-8 py-4 bg-white text-zinc-950 font-bold text-xs uppercase tracking-[0.2em] rounded-full hover:bg-brand-gold transition shadow-2xl" data-cursor="QUOTE">
                 Request Price Estimate
               </a>
             </div>
@@ -459,13 +466,6 @@
           </div>
           <p class="text-xs text-zinc-100 italic leading-relaxed">"We don't just furnish rooms; we build comfortable homes crafted around your personal lifestyle."</p>
         </div>
-            <div>
-              <h4 class="text-white font-bold text-sm">Pushkar Baral</h4>
-              <p class="text-[11px] text-brand-gold uppercase font-semibold">Owner & Founder</p>
-            </div>
-          </div>
-          <p class="text-xs text-zinc-100 italic leading-relaxed">"We don't just furnish rooms; we build comfortable homes crafted around your personal lifestyle."</p>
-        </div>
       </div>
 
     </div>
@@ -486,19 +486,19 @@
 
       <!-- Step Navigation Buttons (1 to 5) -->
       <div class="flex justify-center items-center gap-3 sm:gap-6 mb-12 flex-wrap">
-        <button class="step-btn active px-5 py-3 rounded-2xl font-bold text-sm border-2 border-brand-gold bg-brand-gold text-zinc-950 shadow-lg transition-all duration-300" data-step="1">
+        <button class="step-btn active px-5 py-3 rounded-2xl font-bold text-sm border-2 border-brand-gold bg-brand-gold text-zinc-950 shadow-lg transition-all duration-300" data-step="1" data-cursor="STEP 1">
           <span class="text-lg">1</span> <span class="hidden sm:inline ml-2">Meet Designer</span>
         </button>
-        <button class="step-btn px-5 py-3 rounded-2xl font-bold text-sm border-2 border-zinc-700 bg-zinc-950 text-zinc-300 hover:border-brand-gold transition-all duration-300" data-step="2">
+        <button class="step-btn px-5 py-3 rounded-2xl font-bold text-sm border-2 border-zinc-700 bg-zinc-950 text-zinc-300 hover:border-brand-gold transition-all duration-300" data-step="2" data-cursor="STEP 2">
           <span class="text-lg">2</span> <span class="hidden sm:inline ml-2">3D Layout</span>
         </button>
-        <button class="step-btn px-5 py-3 rounded-2xl font-bold text-sm border-2 border-zinc-700 bg-zinc-950 text-zinc-300 hover:border-brand-gold transition-all duration-300" data-step="3">
+        <button class="step-btn px-5 py-3 rounded-2xl font-bold text-sm border-2 border-zinc-700 bg-zinc-950 text-zinc-300 hover:border-brand-gold transition-all duration-300" data-step="3" data-cursor="STEP 3">
           <span class="text-lg">3</span> <span class="hidden sm:inline ml-2">Materials</span>
         </button>
-        <button class="step-btn px-5 py-3 rounded-2xl font-bold text-sm border-2 border-zinc-700 bg-zinc-950 text-zinc-300 hover:border-brand-gold transition-all duration-300" data-step="4">
+        <button class="step-btn px-5 py-3 rounded-2xl font-bold text-sm border-2 border-zinc-700 bg-zinc-950 text-zinc-300 hover:border-brand-gold transition-all duration-300" data-step="4" data-cursor="STEP 4">
           <span class="text-lg">4</span> <span class="hidden sm:inline ml-2">Execution</span>
         </button>
-        <button class="step-btn px-5 py-3 rounded-2xl font-bold text-sm border-2 border-zinc-700 bg-zinc-950 text-zinc-300 hover:border-brand-gold transition-all duration-300" data-step="5">
+        <button class="step-btn px-5 py-3 rounded-2xl font-bold text-sm border-2 border-zinc-700 bg-zinc-950 text-zinc-300 hover:border-brand-gold transition-all duration-300" data-step="5" data-cursor="STEP 5">
           <span class="text-lg">5</span> <span class="hidden sm:inline ml-2">Handover</span>
         </button>
       </div>
@@ -615,7 +615,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       
       <!-- Card 1: Modular Kitchen -->
-      <div class="hover-link group rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-brand-gold/60 overflow-hidden transition-all duration-300 hover:-translate-y-2">
+      <div class="hover-link group rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-brand-gold/60 overflow-hidden transition-all duration-300 hover:-translate-y-2" data-cursor="KITCHEN">
         <div class="aspect-video overflow-hidden">
           <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=800" alt="Modular Kitchen" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
         </div>
@@ -626,7 +626,7 @@
       </div>
 
       <!-- Card 2: Beds & Master Suites -->
-      <div class="hover-link group rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-brand-gold/60 overflow-hidden transition-all duration-300 hover:-translate-y-2">
+      <div class="hover-link group rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-brand-gold/60 overflow-hidden transition-all duration-300 hover:-translate-y-2" data-cursor="BEDROOM">
         <div class="aspect-video overflow-hidden">
           <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80&w=800" alt="Beds" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
         </div>
@@ -637,7 +637,7 @@
       </div>
 
       <!-- Card 3: Custom Wardrobes -->
-      <div class="hover-link group rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-brand-gold/60 overflow-hidden transition-all duration-300 hover:-translate-y-2">
+      <div class="hover-link group rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-brand-gold/60 overflow-hidden transition-all duration-300 hover:-translate-y-2" data-cursor="WARDROBE">
         <div class="aspect-video overflow-hidden">
           <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&q=80&w=800" alt="Wardrobes" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
         </div>
@@ -648,7 +648,7 @@
       </div>
 
       <!-- Card 4: TV Cabinets -->
-      <div class="hover-link group rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-brand-gold/60 overflow-hidden transition-all duration-300 hover:-translate-y-2">
+      <div class="hover-link group rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-brand-gold/60 overflow-hidden transition-all duration-300 hover:-translate-y-2" data-cursor="TV UNITS">
         <div class="aspect-video overflow-hidden">
           <img src="https://images.unsplash.com/photo-1593696140826-c58b021acf8b?auto=format&fit=crop&q=80&w=800" alt="TV Cabinets" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
         </div>
@@ -659,7 +659,7 @@
       </div>
 
       <!-- Card 5: False Ceiling -->
-      <div class="hover-link group rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-brand-gold/60 overflow-hidden transition-all duration-300 hover:-translate-y-2">
+      <div class="hover-link group rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-brand-gold/60 overflow-hidden transition-all duration-300 hover:-translate-y-2" data-cursor="CEILING">
         <div class="aspect-video overflow-hidden">
           <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800" alt="False Ceiling" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
         </div>
@@ -670,7 +670,7 @@
       </div>
 
       <!-- Card 6: Parquet Flooring -->
-      <div class="hover-link group rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-brand-gold/60 overflow-hidden transition-all duration-300 hover:-translate-y-2">
+      <div class="hover-link group rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-brand-gold/60 overflow-hidden transition-all duration-300 hover:-translate-y-2" data-cursor="PARQUET">
         <div class="aspect-video overflow-hidden">
           <img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&q=80&w=800" alt="Parquet Flooring" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
         </div>
@@ -693,7 +693,7 @@
       <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white mb-6">Drag To See Transformation</h2>
       <p class="text-zinc-200 text-base font-normal mb-12 max-w-xl mx-auto">Slide across to view how Green Space International elevates a plain space into a modern sanctuary.</p>
 
-      <div class="rounded-3xl overflow-hidden border border-brand-gold/40 shadow-2xl max-w-3xl mx-auto">
+      <div class="rounded-3xl overflow-hidden border border-brand-gold/40 shadow-2xl max-w-3xl mx-auto" data-cursor="DRAG">
         <img-comparison-slider class="w-full focus:outline-none">
           <img slot="first" src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=1200" alt="Before Work" class="w-full h-auto" />
           <img slot="second" src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1200" alt="After Green Space Work" class="w-full h-auto" />
@@ -713,7 +713,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       
       <!-- Member 1: Pushkar Baral (Owner) -->
-      <div class="p-8 rounded-3xl bg-zinc-900 border border-brand-gold/50 text-center shadow-2xl hover:border-brand-gold transition duration-300">
+      <div class="p-8 rounded-3xl bg-zinc-900 border border-brand-gold/50 text-center shadow-2xl hover:border-brand-gold transition duration-300" data-cursor="PUSHKAR">
         <!-- Photo Container: Scaled up to w-40 (160px) -->
         <div class="w-36 h-36 sm:w-40 sm:h-40 rounded-full mx-auto mb-6 shadow-2xl overflow-hidden border-2 border-brand-gold group">
           <img src="images/owner.jpg" alt="Pushkar Baral" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -724,7 +724,7 @@
       </div>
 
       <!-- Member 2: 3D Design Department (Pre-linked to images/designer.jpg) -->
-      <div class="p-8 rounded-3xl bg-zinc-900/80 border border-zinc-800 text-center shadow-xl hover:border-brand-gold/50 transition duration-300">
+      <div class="p-8 rounded-3xl bg-zinc-900/80 border border-zinc-800 text-center shadow-xl hover:border-brand-gold/50 transition duration-300" data-cursor="DESIGN">
         <!-- Photo Container: Pre-linked to images/designer.jpg -->
         <div class="w-36 h-36 sm:w-40 sm:h-40 rounded-full mx-auto mb-6 shadow-xl overflow-hidden border-2 border-brand-gold/40">
           <img 
@@ -740,7 +740,7 @@
       </div>
 
       <!-- Member 3: Master Craftsmen (Pre-linked to images/craftsmen.jpg) -->
-      <div class="p-8 rounded-3xl bg-zinc-900/80 border border-zinc-800 text-center shadow-xl hover:border-brand-gold/50 transition duration-300">
+      <div class="p-8 rounded-3xl bg-zinc-900/80 border border-zinc-800 text-center shadow-xl hover:border-brand-gold/50 transition duration-300" data-cursor="CRAFTS">
         <!-- Photo Container: Pre-linked to images/craftsmen.jpg -->
         <div class="w-36 h-36 sm:w-40 sm:h-40 rounded-full mx-auto mb-6 shadow-xl overflow-hidden border-2 border-brand-gold/40">
           <img 
@@ -832,7 +832,7 @@
             <label class="block text-xs font-bold uppercase text-zinc-300 mb-1">Project Details / Message</label>
             <textarea name="message" rows="3" placeholder="Tell us about your room size..." class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-3.5 text-sm text-white focus:border-brand-gold focus:outline-none"></textarea>
           </div>
-          <button type="submit" class="hover-link w-full py-4 bg-gradient-to-r from-brand-gold to-amber-500 text-zinc-950 font-bold text-xs uppercase tracking-widest rounded-xl hover:brightness-110 transition shadow-xl">
+          <button type="submit" class="hover-link w-full py-4 bg-gradient-to-r from-brand-gold to-amber-500 text-zinc-950 font-bold text-xs uppercase tracking-widest rounded-xl hover:brightness-110 transition shadow-xl" data-cursor="SEND">
             Submit Inquiry Now
           </button>
         </form>
@@ -845,7 +845,7 @@
   <!-- Floating WhatsApp Button -->
   <a href="https://wa.me/9779851227074?text=Hello%20Green%20Space%20International,%20I%20want%20to%20inquire%20about%20interior%20design%20services." 
      target="_blank" 
-     class="hover-link fixed bottom-6 right-6 z-50 w-14 h-14 bg-emerald-500 text-white rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-transform">
+     class="hover-link fixed bottom-6 right-6 z-50 w-14 h-14 bg-emerald-500 text-white rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-transform" data-cursor="CHAT">
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
@@ -864,28 +864,36 @@
   <script src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
   
   <script>
-   // 1. Sleek Desktop Cursor Logic (Bypassed on Touch/Mobile Screens)
+    // 1. Interactive Starburst & Morphing Glass Cursor Logic (Desktop Only)
     const dot = document.getElementById('cursor-dot');
     const outline = document.getElementById('cursor-outline');
+    const cursorText = document.getElementById('cursor-text');
 
     if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
       window.addEventListener('mousemove', (e) => {
-        dot.style.left = `${e.clientX}px`;
-        dot.style.top = `${e.clientY}px`;
-        
-        // Fluid inertia lag using GSAP
-        gsap.to(outline, { 
-          x: e.clientX, 
-          y: e.clientY, 
-          duration: 0.2, 
-          ease: 'power2.out' 
-        });
+        gsap.to(dot, { x: e.clientX, y: e.clientY, duration: 0.05, ease: 'power2.out' });
+        gsap.to(outline, { x: e.clientX, y: e.clientY, duration: 0.22, ease: 'power2.out' });
       });
 
-      // Expand ring when hovering interactive elements
-      document.querySelectorAll('.hover-link, button, a, .step-btn, .project-card').forEach(el => {
-        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-active'));
-        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
+      // Contextual Cursor Text Display
+      document.querySelectorAll('a, button, .hover-link, .step-btn, [data-cursor]').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          document.body.classList.add('cursor-active');
+          const customTag = el.getAttribute('data-cursor');
+          if (customTag) {
+            cursorText.innerText = customTag;
+            cursorText.classList.remove('opacity-0');
+          } else {
+            cursorText.innerText = 'OPEN';
+            cursorText.classList.remove('opacity-0');
+          }
+        });
+
+        el.addEventListener('mouseleave', () => {
+          document.body.classList.remove('cursor-active');
+          cursorText.classList.add('opacity-0');
+          cursorText.innerText = '';
+        });
       });
     }
 
