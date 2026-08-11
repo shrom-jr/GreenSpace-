@@ -95,6 +95,49 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
+    /* Hero Background Slow Ken Burns Zoom Effect */
+    .heroSwiper .swiper-slide img {
+      transition: transform 6s cubic-bezier(0.25, 1, 0.5, 1);
+      transform: scale(1);
+    }
+    .heroSwiper .swiper-slide-active img {
+      transform: scale(1.15);
+    }
+
+    /* Staggered Text & Button Entrance Animations */
+    .hero-animate-badge,
+    .hero-animate-title,
+    .hero-animate-desc,
+    .hero-animate-btns {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .swiper-slide-active .hero-animate-badge {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.2s;
+    }
+
+    .swiper-slide-active .hero-animate-title {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.4s;
+    }
+
+    .swiper-slide-active .hero-animate-desc {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.6s;
+    }
+
+    .swiper-slide-active .hero-animate-btns {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.8s;
+    }
   </style>
 </head>
 <body class="overflow-x-hidden selection:bg-brand-gold selection:text-black font-sans bg-brand-dark text-zinc-100">
@@ -120,7 +163,7 @@
   </div>
 
 
- <!-- ================================================================= -->
+  <!-- ================================================================= -->
   <!-- SECTION 2: NAVIGATION HEADER & LOGO (FULLY RESPONSIVE + SPREAD) -->
   <!-- ================================================================= -->
   <header class="sticky top-0 z-50 backdrop-blur-xl bg-brand-dark/95 border-b border-white/10 transition-all duration-300">
@@ -196,28 +239,28 @@
 
 
   <!-- ================================================================= -->
-  <!-- SECTION 3: HERO SLIDER (4 HIGH-QUALITY INTERIOR SLIDES) -->
+  <!-- SECTION 3: HERO SLIDER (KEN BURNS ZOOM + STAGGERED ENTRANCE) -->
   <!-- ================================================================= -->
-  <section class="relative h-[92vh] w-full overflow-hidden">
+  <section class="relative h-[92vh] w-full overflow-hidden bg-brand-dark">
     <div class="swiper heroSwiper w-full h-full">
       <div class="swiper-wrapper">
         
         <!-- Slide 1: Complete Home Interiors -->
-        <div class="swiper-slide relative flex items-center justify-center">
+        <div class="swiper-slide relative flex items-center justify-center overflow-hidden">
           <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=2000" alt="Luxury Living Room" class="absolute inset-0 w-full h-full object-cover" />
           <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-black/75 to-black/60"></div>
           
           <div class="relative z-10 text-center px-6 max-w-5xl">
-            <span class="inline-block px-5 py-2 rounded-full bg-black/70 border border-brand-gold/60 text-brand-gold text-xs uppercase tracking-[0.28em] font-semibold mb-6 shadow-xl">
+            <span class="hero-animate-badge inline-block px-5 py-2 rounded-full bg-black/70 border border-brand-gold/60 text-brand-gold text-xs uppercase tracking-[0.28em] font-semibold mb-6 shadow-xl">
               Complete Interior & Furniture Solutions
             </span>
-            <h1 class="text-4xl sm:text-6xl md:text-7xl font-serif font-bold tracking-tight text-white mb-6 leading-tight drop-shadow-2xl">
+            <h1 class="hero-animate-title text-4xl sm:text-6xl md:text-7xl font-serif font-bold tracking-tight text-white mb-6 leading-tight drop-shadow-2xl">
               Transforming Your <span class="gold-gradient-text">Dream Home</span> Into Reality
             </h1>
-            <p class="text-zinc-100 text-base md:text-xl font-medium max-w-2xl mx-auto mb-10 bg-black/50 backdrop-blur-md p-5 rounded-2xl border border-white/15 shadow-2xl">
+            <p class="hero-animate-desc text-zinc-100 text-base md:text-xl font-medium max-w-2xl mx-auto mb-10 bg-black/50 backdrop-blur-md p-5 rounded-2xl border border-white/15 shadow-2xl">
               Custom modular kitchens, luxury wardrobes, TV units, and architectural parquet flooring crafted in Kathmandu.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <div class="hero-animate-btns flex flex-col sm:flex-row justify-center items-center gap-4">
               <a href="#services" class="hover-link px-8 py-4 bg-gradient-to-r from-brand-gold to-amber-500 text-zinc-950 font-bold text-xs uppercase tracking-[0.2em] rounded-full shadow-2xl hover:brightness-110 transition">
                 Explore Specialties
               </a>
@@ -229,65 +272,71 @@
         </div>
 
         <!-- Slide 2: Modular Kitchens -->
-        <div class="swiper-slide relative flex items-center justify-center">
+        <div class="swiper-slide relative flex items-center justify-center overflow-hidden">
           <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=2000" alt="Modular Kitchen" class="absolute inset-0 w-full h-full object-cover" />
           <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-black/75 to-black/60"></div>
 
           <div class="relative z-10 text-center px-6 max-w-5xl">
-            <span class="inline-block px-5 py-2 rounded-full bg-black/70 border border-brand-gold/60 text-brand-gold text-xs uppercase tracking-[0.28em] font-semibold mb-6 shadow-xl">
-              Modern Ergonomics & Ergonomic Luxury
+            <span class="hero-animate-badge inline-block px-5 py-2 rounded-full bg-black/70 border border-brand-gold/60 text-brand-gold text-xs uppercase tracking-[0.28em] font-semibold mb-6 shadow-xl">
+              Modern Ergonomics & Luxury
             </span>
-            <h1 class="text-4xl sm:text-6xl md:text-7xl font-serif font-bold tracking-tight text-white mb-6 leading-tight drop-shadow-2xl">
+            <h1 class="hero-animate-title text-4xl sm:text-6xl md:text-7xl font-serif font-bold tracking-tight text-white mb-6 leading-tight drop-shadow-2xl">
               Bespoke <span class="gold-gradient-text">Modular Kitchens</span>
             </h1>
-            <p class="text-zinc-100 text-base md:text-xl font-medium max-w-2xl mx-auto mb-10 bg-black/50 backdrop-blur-md p-5 rounded-2xl border border-white/15 shadow-2xl">
+            <p class="hero-animate-desc text-zinc-100 text-base md:text-xl font-medium max-w-2xl mx-auto mb-10 bg-black/50 backdrop-blur-md p-5 rounded-2xl border border-white/15 shadow-2xl">
               German & Italian hardware fittings, acrylic finishes, granite counter-tops, and smart storage baskets.
             </p>
-            <a href="#contact" class="hover-link inline-block px-8 py-4 bg-white text-zinc-950 font-bold text-xs uppercase tracking-[0.2em] rounded-full hover:bg-brand-gold transition shadow-2xl">
-              Book Free Site Measurement
-            </a>
+            <div class="hero-animate-btns flex justify-center">
+              <a href="#contact" class="hover-link inline-block px-8 py-4 bg-white text-zinc-950 font-bold text-xs uppercase tracking-[0.2em] rounded-full hover:bg-brand-gold transition shadow-2xl">
+                Book Free Site Measurement
+              </a>
+            </div>
           </div>
         </div>
 
         <!-- Slide 3: Bedroom & Wardrobes -->
-        <div class="swiper-slide relative flex items-center justify-center">
+        <div class="swiper-slide relative flex items-center justify-center overflow-hidden">
           <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80&w=2000" alt="Master Bedroom" class="absolute inset-0 w-full h-full object-cover" />
           <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-black/75 to-black/60"></div>
 
           <div class="relative z-10 text-center px-6 max-w-5xl">
-            <span class="inline-block px-5 py-2 rounded-full bg-black/70 border border-brand-gold/60 text-brand-gold text-xs uppercase tracking-[0.28em] font-semibold mb-6 shadow-xl">
+            <span class="hero-animate-badge inline-block px-5 py-2 rounded-full bg-black/70 border border-brand-gold/60 text-brand-gold text-xs uppercase tracking-[0.28em] font-semibold mb-6 shadow-xl">
               Comfort & Sophistication
             </span>
-            <h1 class="text-4xl sm:text-6xl md:text-7xl font-serif font-bold tracking-tight text-white mb-6 leading-tight drop-shadow-2xl">
+            <h1 class="hero-animate-title text-4xl sm:text-6xl md:text-7xl font-serif font-bold tracking-tight text-white mb-6 leading-tight drop-shadow-2xl">
               Master Bedrooms & <span class="gold-gradient-text">Custom Wardrobes</span>
             </h1>
-            <p class="text-zinc-100 text-base md:text-xl font-medium max-w-2xl mx-auto mb-10 bg-black/50 backdrop-blur-md p-5 rounded-2xl border border-white/15 shadow-2xl">
+            <p class="hero-animate-desc text-zinc-100 text-base md:text-xl font-medium max-w-2xl mx-auto mb-10 bg-black/50 backdrop-blur-md p-5 rounded-2xl border border-white/15 shadow-2xl">
               Sliding glass wardrobes, upholstered headboards, hydraulic storage beds, and ambient profile lighting.
             </p>
-            <a href="#process" class="hover-link inline-block px-8 py-4 bg-gradient-to-r from-brand-gold to-amber-500 text-zinc-950 font-bold text-xs uppercase tracking-[0.2em] rounded-full hover:brightness-110 transition shadow-2xl">
-              See How We Work
-            </a>
+            <div class="hero-animate-btns flex justify-center">
+              <a href="#process" class="hover-link inline-block px-8 py-4 bg-gradient-to-r from-brand-gold to-amber-500 text-zinc-950 font-bold text-xs uppercase tracking-[0.2em] rounded-full hover:brightness-110 transition shadow-2xl">
+                See How We Work
+              </a>
+            </div>
           </div>
         </div>
 
         <!-- Slide 4: False Ceiling & Parquet -->
-        <div class="swiper-slide relative flex items-center justify-center">
+        <div class="swiper-slide relative flex items-center justify-center overflow-hidden">
           <img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&q=80&w=2000" alt="Parquet Flooring" class="absolute inset-0 w-full h-full object-cover" />
           <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-black/75 to-black/60"></div>
 
           <div class="relative z-10 text-center px-6 max-w-5xl">
-            <span class="inline-block px-5 py-2 rounded-full bg-black/70 border border-brand-gold/60 text-brand-gold text-xs uppercase tracking-[0.28em] font-semibold mb-6 shadow-xl">
+            <span class="hero-animate-badge inline-block px-5 py-2 rounded-full bg-black/70 border border-brand-gold/60 text-brand-gold text-xs uppercase tracking-[0.28em] font-semibold mb-6 shadow-xl">
               Architectural Details
             </span>
-            <h1 class="text-4xl sm:text-6xl md:text-7xl font-serif font-bold tracking-tight text-white mb-6 leading-tight drop-shadow-2xl">
+            <h1 class="hero-animate-title text-4xl sm:text-6xl md:text-7xl font-serif font-bold tracking-tight text-white mb-6 leading-tight drop-shadow-2xl">
               False Ceiling & <span class="gold-gradient-text">Parquet Flooring</span>
             </h1>
-            <p class="text-zinc-100 text-base md:text-xl font-medium max-w-2xl mx-auto mb-10 bg-black/50 backdrop-blur-md p-5 rounded-2xl border border-white/15 shadow-2xl">
+            <p class="hero-animate-desc text-zinc-100 text-base md:text-xl font-medium max-w-2xl mx-auto mb-10 bg-black/50 backdrop-blur-md p-5 rounded-2xl border border-white/15 shadow-2xl">
               Water-resistant laminate parquet, gypsum board false ceilings, and customized wall louvers.
             </p>
-            <a href="#contact" class="hover-link inline-block px-8 py-4 bg-white text-zinc-950 font-bold text-xs uppercase tracking-[0.2em] rounded-full hover:bg-brand-gold transition shadow-2xl">
-              Request Price Estimate
-            </a>
+            <div class="hero-animate-btns flex justify-center">
+              <a href="#contact" class="hover-link inline-block px-8 py-4 bg-white text-zinc-950 font-bold text-xs uppercase tracking-[0.2em] rounded-full hover:bg-brand-gold transition shadow-2xl">
+                Request Price Estimate
+              </a>
+            </div>
           </div>
         </div>
 
@@ -793,11 +842,13 @@
       el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
     });
 
-    // 2. Swiper Hero Slider Initialization
+    // 2. Swiper Hero Slider Initialization (Ken Burns Zoom + Fade)
     new Swiper('.heroSwiper', {
       loop: true,
-      speed: 1000,
-      autoplay: { delay: 4500, disableOnInteraction: false },
+      effect: 'fade',
+      fadeEffect: { crossFade: true },
+      speed: 1200,
+      autoplay: { delay: 5500, disableOnInteraction: false },
       pagination: { el: '.swiper-pagination', clickable: true },
     });
 
@@ -830,7 +881,7 @@
       });
     });
 
-    // Mobile Hamburger Menu Toggle Functionality
+    // 4. Mobile Hamburger Menu Toggle Functionality
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     const menuIcon = document.getElementById('menu-icon');
