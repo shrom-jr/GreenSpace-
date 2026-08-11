@@ -121,34 +121,33 @@
 
 
  <!-- ================================================================= -->
-  <!-- SECTION 2: NAVIGATION HEADER & LOGO (SLIMMED DOWN & DIVIDERS ADDED) -->
+  <!-- SECTION 2: NAVIGATION HEADER & LOGO (FULLY RESPONSIVE + SPREAD) -->
   <!-- ================================================================= -->
   <header class="sticky top-0 z-50 backdrop-blur-xl bg-brand-dark/95 border-b border-white/10 transition-all duration-300">
-    <div class="max-w-[96%] xl:max-w-7xl mx-auto px-4 sm:px-8 py-2 flex items-center justify-between">
+    <div class="w-full px-4 sm:px-8 lg:px-12 py-2.5 flex items-center justify-between">
       
-      <!-- Company Logo & Title (Pushed Far Left) -->
+      <!-- Company Logo & Title (Locked to Far Left) -->
       <a href="#" class="flex items-center space-x-3 hover-link group shrink-0">
-        <!-- Prominent Logo Size with Sharp 1px Outline -->
-        <div class="h-12 md:h-14 w-auto flex items-center justify-center group-hover:scale-105 transition-transform py-0.5">
+        <div class="h-10 md:h-12 w-auto flex items-center justify-center group-hover:scale-105 transition-transform">
           <img 
             src="images/logo.png" 
             alt="Green Space Logo" 
-            class="h-10 md:h-12 w-auto object-contain"
+            class="h-9 md:h-11 w-auto object-contain"
             style="filter: drop-shadow(1px 0px 0px #ffffff) drop-shadow(-1px 0px 0px #ffffff) drop-shadow(0px 1px 0px #ffffff) drop-shadow(0px -1px 0px #ffffff);" 
           />
         </div>
         <div>
-          <span class="text-xl md:text-2xl font-serif font-extrabold tracking-wider text-white block leading-none group-hover:text-brand-gold transition">
+          <span class="text-lg md:text-xl font-serif font-extrabold tracking-wider text-white block leading-none group-hover:text-brand-gold transition">
             GREEN SPACE
           </span>
-          <span class="text-[10px] md:text-xs tracking-[0.2em] uppercase text-brand-gold font-bold block mt-1">
+          <span class="text-[9px] md:text-[10px] tracking-[0.22em] uppercase text-brand-gold font-bold block mt-1">
             International Pvt. Ltd.
           </span>
         </div>
       </a>
 
-      <!-- Menu Navigation Links with Vertical Dividers -->
-      <nav class="hidden lg:flex items-center space-x-3 xl:space-x-5 text-[11px] xl:text-xs font-semibold tracking-[0.12em] uppercase text-zinc-200">
+      <!-- Desktop Menu Links (Visible on Laptop/Desktop Screens) -->
+      <nav class="hidden xl:flex items-center space-x-5 text-xs font-semibold tracking-[0.12em] uppercase text-zinc-200">
         <a href="#about" class="hover:text-brand-gold transition hover-link">About Us</a>
         <span class="text-zinc-700 font-light select-none">|</span>
         <a href="#process" class="hover:text-brand-gold transition hover-link">5-Step Process</a>
@@ -162,12 +161,36 @@
         <a href="#contact" class="hover:text-brand-gold transition hover-link">Contact</a>
       </nav>
 
-      <!-- WhatsApp Action Button -->
-      <a href="https://wa.me/9779851227074" target="_blank" class="hover-link hidden sm:inline-flex items-center space-x-2 px-5 py-2 text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-brand-gold to-amber-500 text-zinc-950 rounded-full shadow-md hover:brightness-110 transition duration-300 shrink-0">
-        <i class="fa-brands fa-whatsapp text-sm"></i>
-        <span>WhatsApp Us</span>
-      </a>
+      <!-- Right Side: WhatsApp Button + Mobile Hamburger Menu Toggle -->
+      <div class="flex items-center space-x-4">
+        <!-- WhatsApp Action Button -->
+        <a href="https://wa.me/9779851227074" target="_blank" class="hover-link hidden sm:inline-flex items-center space-x-2 px-5 py-2 text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-brand-gold to-amber-500 text-zinc-950 rounded-full shadow-md hover:brightness-110 transition duration-300 shrink-0">
+          <i class="fa-brands fa-whatsapp text-sm"></i>
+          <span>WhatsApp Us</span>
+        </a>
 
+        <!-- Mobile Hamburger Button (Only shows on Mobile/Tablet) -->
+        <button id="mobile-menu-btn" class="xl:hidden text-white hover:text-brand-gold focus:outline-none p-2 rounded-lg text-xl">
+          <i class="fa-solid fa-bars" id="menu-icon"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Navigation Drawer (Dropdown when Hamburger Icon is tapped) -->
+    <div id="mobile-menu" class="hidden xl:hidden bg-brand-dark/98 border-b border-brand-gold/30 px-6 py-6 space-y-4 text-center text-sm font-semibold uppercase tracking-widest text-zinc-200 shadow-2xl">
+      <a href="#about" class="block py-2 hover:text-brand-gold transition mobile-link">About Us</a>
+      <a href="#process" class="block py-2 hover:text-brand-gold transition mobile-link">5-Step Process</a>
+      <a href="#services" class="block py-2 hover:text-brand-gold transition mobile-link">Specialties</a>
+      <a href="#transformations" class="block py-2 hover:text-brand-gold transition mobile-link">Showcase</a>
+      <a href="#team" class="block py-2 hover:text-brand-gold transition mobile-link">Leadership</a>
+      <a href="#contact" class="block py-2 hover:text-brand-gold transition mobile-link">Contact</a>
+      <div class="pt-4 sm:hidden">
+        <a href="https://wa.me/9779851227074" target="_blank" class="inline-flex items-center justify-center space-x-2 w-full py-3 text-xs font-bold uppercase bg-gradient-to-r from-brand-gold to-amber-500 text-zinc-950 rounded-full">
+          <i class="fa-brands fa-whatsapp text-base"></i>
+          <span>WhatsApp Us</span>
+        </a>
+      </div>
     </div>
   </header>
 
@@ -806,6 +829,34 @@
         });
       });
     });
+
+    // Mobile Hamburger Menu Toggle Functionality
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        if (mobileMenu.classList.contains('hidden')) {
+          menuIcon.classList.remove('fa-xmark');
+          menuIcon.classList.add('fa-bars');
+        } else {
+          menuIcon.classList.remove('fa-bars');
+          menuIcon.classList.add('fa-xmark');
+        }
+      });
+
+      // Auto-close mobile menu when a section link is tapped
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuIcon.classList.remove('fa-xmark');
+          menuIcon.classList.add('fa-bars');
+        });
+      });
+    }
   </script>
 
 </body>
