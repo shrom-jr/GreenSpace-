@@ -50,14 +50,18 @@
 
   <!-- Custom Cursor & Styling Upgrades -->
   <style>
-    /* Clean Custom Starburst Pointer - Active on Desktop Only */
+    /* Kill default hand pointers on desktop links/buttons entirely */
     @media (hover: hover) and (pointer: fine) {
-      body { cursor: none; }
-      #cursor-dot { display: block; }
+      body, a, button, input, select, textarea, .hover-link, .step-btn {
+        cursor: none !important;
+      }
+      #cursor-dot, #cursor-ring { display: block; }
     }
     @media (hover: none) or (pointer: coarse) {
-      body, a, button { cursor: auto !important; }
-      #cursor-dot { display: none !important; }
+      body, a, button, input, select, textarea {
+        cursor: auto !important;
+      }
+      #cursor-dot, #cursor-ring { display: none !important; }
     }
 
     #cursor-dot {
@@ -69,13 +73,35 @@
       transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* Crisp Starburst Hover Animation (No Blur Circle) */
+    #cursor-ring {
+      pointer-events: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 24px;
+      height: 24px;
+      border: 1.5px solid rgba(212, 175, 55, 0.6);
+      border-radius: 50%;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                  height 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+                  border-color 0.3s ease,
+                  background-color 0.3s ease;
+    }
+
+    /* Crisp Animated Hover Expansion (Zero Text Blurring) */
     .cursor-active #cursor-dot {
-      transform: translate(-50%, -50%) scale(1.8) rotate(45deg);
+      transform: translate(-50%, -50%) scale(1.4) rotate(45deg);
     }
     .cursor-active #cursor-dot svg {
       fill: #ffffff;
-      filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 14px rgba(212, 175, 55, 0.8));
+      filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.9));
+    }
+    .cursor-active #cursor-ring {
+      width: 50px;
+      height: 50px;
+      border-color: #d4af37;
+      background-color: rgba(212, 175, 55, 0.08);
     }
 
     /* Swiper Bullets */
@@ -135,12 +161,13 @@
 </head>
 <body class="overflow-x-hidden selection:bg-brand-gold selection:text-black font-sans bg-brand-dark text-zinc-100">
 
-  <!-- Crisp Animated Gold Starburst Pointer -->
+  <!-- Crisp Starburst Pointer & Expanding Ring -->
   <div id="cursor-dot">
     <svg class="w-5 h-5 fill-brand-gold transition-all duration-200 drop-shadow-[0_0_6px_rgba(212,175,55,0.7)]" viewBox="0 0 24 24">
       <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z"/>
     </svg>
   </div>
+  <div id="cursor-ring"></div>
 
 
   <!-- ================================================================= -->
@@ -837,12 +864,14 @@
   <script src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
   
   <script>
-    // 1. Clean Starburst Pointer Animation (Desktop Only)
+    // 1. Clean Starburst & Expanding Ring Animation (Desktop Only)
     const dot = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
 
     if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
       window.addEventListener('mousemove', (e) => {
-        gsap.to(dot, { x: e.clientX, y: e.clientY, duration: 0.08, ease: 'power2.out' });
+        gsap.to(dot, { x: e.clientX, y: e.clientY, duration: 0.05, ease: 'power2.out' });
+        gsap.to(ring, { x: e.clientX, y: e.clientY, duration: 0.2, ease: 'power2.out' });
       });
 
       // Scale & Rotate Pointer on Hover
