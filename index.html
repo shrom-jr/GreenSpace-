@@ -128,9 +128,14 @@
       
       <!-- Company Logo & Title -->
       <a href="#" class="flex items-center space-x-3 hover-link group">
-        <!-- White container box so black & green transparent PNG pops with high contrast -->
-        <div class="w-12 h-12 rounded-xl bg-white border-2 border-brand-gold flex items-center justify-center p-1.5 shadow-xl group-hover:scale-105 transition-transform overflow-hidden">
-          <img src="images/logo.png" alt="Green Space Logo" class="w-full h-full object-contain" />
+        <!-- Floating Logo with White/Gold Contour Filter (No White Box) -->
+        <div class="h-12 w-auto flex items-center justify-center group-hover:scale-105 transition-transform">
+          <img 
+            src="images/logo.png" 
+            alt="Green Space Logo" 
+            class="h-10 w-auto object-contain"
+            style="filter: drop-shadow(0px 0px 2px rgba(255, 255, 255, 0.95)) drop-shadow(0px 0px 8px rgba(212, 175, 55, 0.4));" 
+          />
         </div>
         <div>
           <span class="text-xl font-serif font-extrabold tracking-wider text-white block leading-tight group-hover:text-brand-gold transition">
