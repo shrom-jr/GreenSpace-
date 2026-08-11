@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth bg-zinc-950 text-zinc-100">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Green Space International Pvt. Ltd. | Complete Interior & Furniture Solutions</title>
+
+  <!-- Google Fonts: Cinzel (Luxury Serif) & Plus Jakarta Sans (Clean Modern Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS Framework CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Cinzel', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              green: '#0e472a',
+              emerald: '#166534',
+              gold: '#d4af37',
+              goldlight: '#fef08a',
+              dark: '#080d0a',
+              card: '#121914',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- FontAwesome 6 Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Swiper.js Slider CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- Img Comparison Slider CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css" />
+
+  <!-- GSAP Animation Library CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Custom Cursor & Styling Upgrades -->
+  <style>
+    body { cursor: none; }
+    
+    /* Glowing Aura Magnetic Cursor */
+    #cursor-dot {
+      pointer-events: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 10px; height: 10px;
+      background: #d4af37;
+      box-shadow: 0 0 12px #d4af37, 0 0 20px #166534;
+      border-radius: 50%;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+    }
+    #cursor-outline {
+      pointer-events: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 48px; height: 48px;
+      border: 1.5px solid rgba(212, 175, 55, 0.5);
+      background: rgba(22, 101, 52, 0.08);
+      backdrop-filter: blur(2px);
+      border-radius: 50%;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.25s, height 0.25s, background-color 0.25s, border-color 0.25s;
+    }
+    .cursor-active #cursor-outline {
+      width: 80px;
+      height: 80px;
+      background-color: rgba(212, 175, 55, 0.15);
+      border-color: #d4af37;
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+    }
+
+    /* Swiper Bullets */
+    .swiper-pagination-bullet { background: #ffffff !important; opacity: 0.5; width: 12px; height: 12px; }
+    .swiper-pagination-bullet-active { background: #d4af37 !important; opacity: 1; width: 32px; border-radius: 6px; }
+
+    /* Gradient Text Effect */
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #ffffff 0%, #fef08a 40%, #d4af37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden selection:bg-brand-gold selection:text-black font-sans bg-brand-dark text-zinc-100">
+
+  <!-- Glowing Custom Cursor Elements -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-outline"></div>
+
+
+  <!-- ================================================================= -->
+  <!-- SECTION 1: TOP ANNOUNCEMENT BAR (EDIT CONTACT & LOCATION HERE) -->
+  <!-- ================================================================= -->
+  <div class="bg-brand-green/95 border-b border-brand-gold/30 text-xs py-2.5 px-6 text-zinc-200 flex justify-between items-center z-50 relative">
+    <div class="flex items-center space-x-6">
+      <span class="font-medium"><i class="fa-solid fa-location-dot text-brand-gold mr-2"></i> Pepsicola, Kathmandu - 32, Nepal</span>
+      <span class="hidden md:inline font-medium"><i class="fa-solid fa-clock text-brand-gold mr-2"></i> Sun - Fri: 9:00 AM - 6:00 PM</span>
+    </div>
+    <div class="flex items-center space-x-4 font-semibold">
+      <a href="tel:+9779851227074" class="text-brand-gold hover:text-white transition flex items-center">
+        <i class="fa-solid fa-phone mr-2"></i> +977 9851227074
+      </a>
+    </div>
+  </div>
+
+
+  <!-- ================================================================= -->
+  <!-- SECTION 2: NAVIGATION HEADER & LOGO (EDIT MENU LINKS HERE) -->
+  <!-- ================================================================= -->
+  <header class="sticky top-0 z-50 backdrop-blur-xl bg-brand-dark/90 border-b border-white/10 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      
+      <!-- Company Logo & Title -->
+      <a href="#" class="flex items-center space-x-3 hover-link group">
+        <!-- SVG Logo Matched to Uploaded Image -->
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-emerald to-brand-green border border-brand-gold/50 flex items-center justify-center p-2 shadow-lg group-hover:scale-105 transition-transform">
+          <svg viewBox="0 0 100 100" class="w-full h-full fill-none">
+            <!-- Roof / Chimney (Green) -->
+            <path d="M15,50 L50,18 L85,50 L75,50 L75,25 L65,25 L65,37 L50,25 Z" fill="#22c55e" />
+            <!-- Inner Dot -->
+            <circle cx="50" cy="48" r="7" fill="#000000" />
+            <!-- Triangle Base Frame (Black) -->
+            <path d="M25,58 L75,58 L75,85 L25,85 Z" fill="#000000" />
+            <path d="M25,85 L75,45 L75,85 Z" fill="#000000" stroke="#22c55e" stroke-width="4" />
+          </svg>
+        </div>
+        <div>
+          <span class="text-xl font-serif font-extrabold tracking-wider text-white block leading-tight group-hover:text-brand-gold transition">
+            GREEN SPACE
+          </span>
+          <span class="text-[10px] tracking-[0.22em] uppercase text-brand-gold font-bold block">
+            International Pvt. Ltd.
+          </span>
+        </div>
+      </a>
+
+      <!-- Menu Navigation Links -->
+      <nav class="hidden lg:flex space-x-8 text-xs font-semibold tracking-[0.15em] uppercase text-zinc-200">
+        <a href="#about" class="hover:text-brand-gold transition hover-link">About Us</a>
+        <a href="#process" class="hover:text-brand-gold transition hover-link">5-Step Process</a>
+        <a href="#services" class="hover:text-brand-gold transition hover-link">Specialties</a>
+        <a href="#transformations" class="hover:text-brand-gold transition hover-link">Showcase</a>
+        <a href="#team" class="hover:text-brand-gold transition hover-link">Leadership</a>
+        <a href="#contact" class="hover:text-brand-gold transition hover-link">Contact</a>
+      </nav>
+
+      <!-- WhatsApp Action Button -->
+      <a href="https://wa.me/9779851227074" target="_blank" class="hover-link hidden sm:inline-flex items-center space-x-2 px-6 py-2.5 text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-brand-gold to-amber-500 text-zinc-950 rounded-full shadow-lg hover:brightness-110 transition duration-300">
+        <i class="fa-brands fa-whatsapp text-sm"></i>
+        <span>WhatsApp Us</span>
+      </a>
+    </div>
+  </header>
+
+
+  <!-- ================================================================= -->
+  <!-- SECTION 3: HERO SLIDER (4 HIGH-QUALITY INTERIOR SLIDES) -->
+  <!-- ================================================================= -->
+  <section class="relative h-[92vh] w-full overflow-hidden">
+    <div class="swiper heroSwiper w-full h-full">
+      <div class="swiper-wrapper">
+        
+        <!-- Slide 1: Complete Home Interiors -->
+        <div class="swiper-slide relative flex items-center justify-center">
+          <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=2000" alt="Luxury Living Room" class="absolute inset-0 w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-black/75 to-black/60"></div>
+          
+          <div class="relative z-10 text-center px-6 max-w-5xl">
+            <span class="inline-block px-5 py-2 rounded-full bg-black/70 border border-brand-gold/60 text-brand-gold text-xs uppercase tracking-[0.28em] font-semibold mb-6 shadow-xl">
+              Complete Interior & Furniture Solutions
+            </span>
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-serif font-bold tracking-tight text-white mb-6 leading-tight drop-shadow-2xl">
+              Transforming Your <span class="gold-gradient-text">Dream Home</span> Into Reality
+            </h1>
+            <p class="text-zinc-100 text-base md:text-xl font-medium max-w-2xl mx-auto mb-10 bg-black/50 backdrop-blur-md p-5 rounded-2xl border border-white/15 shadow-2xl">
+              Custom modular kitchens, luxury wardrobes, TV units, and architectural parquet flooring crafted in Kathmandu.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+              <a href="#services" class="hover-link px-8 py-4 bg-gradient-to-r from-brand-gold to-amber-500 text-zinc-950 font-bold text-xs uppercase tracking-[0.2em] rounded-full shadow-2xl hover:brightness-110 transition">
+                Explore Specialties
+              </a>
+              <a href="tel:+9779851227074" class="hover-link px-8 py-4 bg-black/70 border border-brand-gold text-brand-gold font-bold text-xs uppercase tracking-[0.2em] rounded-full hover:bg-brand-gold hover:text-zinc-950 transition shadow-xl">
+                Call +977 9851227074
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: Modular Kitchens -->
+        <div class="swiper-slide relative flex items-center justify-center">
+          <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=2000" alt="Modular Kitchen" class="absolute inset-0 w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-black/75 to-black/60"></div>
+
+          <div class="relative z-10 text-center px-6 max-w-5xl">
+            <span class="inline-block px-5 py-2 rounded-full bg-black/70 border border-brand-gold/60 text-brand-gold text-xs uppercase tracking-[0.28em] font-semibold mb-6 shadow-xl">
+              Modern Ergonomics & Ergonomic Luxury
+            </span>
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-serif font-bold tracking-tight text-white mb-6 leading-tight drop-shadow-2xl">
+              Bespoke <span class="gold-gradient-text">Modular Kitchens</span>
+            </h1>
+            <p class="text-zinc-100 text-base md:text-xl font-medium max-w-2xl mx-auto mb-10 bg-black/50 backdrop-blur-md p-5 rounded-2xl border border-white/15 shadow-2xl">
+              German & Italian hardware fittings, acrylic finishes, granite counter-tops, and smart storage baskets.
+            </p>
+            <a href="#contact" class="hover-link inline-block px-8 py-4 bg-white text-zinc-950 font-bold text-xs uppercase tracking-[0.2em] rounded-full hover:bg-brand-gold transition shadow-2xl">
+              Book Free Site Measurement
+            </a>
+          </div>
+        </div>
+
+        <!-- Slide 3: Bedroom & Wardrobes -->
+        <div class="swiper-slide relative flex items-center justify-center">
+          <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80&w=2000" alt="Master Bedroom" class="absolute inset-0 w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-black/75 to-black/60"></div>
+
+          <div class="relative z-10 text-center px-6 max-w-5xl">
+            <span class="inline-block px-5 py-2 rounded-full bg-black/70 border border-brand-gold/60 text-brand-gold text-xs uppercase tracking-[0.28em] font-semibold mb-6 shadow-xl">
+              Comfort & Sophistication
+            </span>
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-serif font-bold tracking-tight text-white mb-6 leading-tight drop-shadow-2xl">
+              Master Bedrooms & <span class="gold-gradient-text">Custom Wardrobes</span>
+            </h1>
+            <p class="text-zinc-100 text-base md:text-xl font-medium max-w-2xl mx-auto mb-10 bg-black/50 backdrop-blur-md p-5 rounded-2xl border border-white/15 shadow-2xl">
+              Sliding glass wardrobes, upholstered headboards, hydraulic storage beds, and ambient profile lighting.
+            </p>
+            <a href="#process" class="hover-link inline-block px-8 py-4 bg-gradient-to-r from-brand-gold to-amber-500 text-zinc-950 font-bold text-xs uppercase tracking-[0.2em] rounded-full hover:brightness-110 transition shadow-2xl">
+              See How We Work
+            </a>
+          </div>
+        </div>
+
+        <!-- Slide 4: False Ceiling & Parquet -->
+        <div class="swiper-slide relative flex items-center justify-center">
+          <img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&q=80&w=2000" alt="Parquet Flooring" class="absolute inset-0 w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-black/75 to-black/60"></div>
+
+          <div class="relative z-10 text-center px-6 max-w-5xl">
+            <span class="inline-block px-5 py-2 rounded-full bg-black/70 border border-brand-gold/60 text-brand-gold text-xs uppercase tracking-[0.28em] font-semibold mb-6 shadow-xl">
+              Architectural Details
+            </span>
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-serif font-bold tracking-tight text-white mb-6 leading-tight drop-shadow-2xl">
+              False Ceiling & <span class="gold-gradient-text">Parquet Flooring</span>
+            </h1>
+            <p class="text-zinc-100 text-base md:text-xl font-medium max-w-2xl mx-auto mb-10 bg-black/50 backdrop-blur-md p-5 rounded-2xl border border-white/15 shadow-2xl">
+              Water-resistant laminate parquet, gypsum board false ceilings, and customized wall louvers.
+            </p>
+            <a href="#contact" class="hover-link inline-block px-8 py-4 bg-white text-zinc-950 font-bold text-xs uppercase tracking-[0.2em] rounded-full hover:bg-brand-gold transition shadow-2xl">
+              Request Price Estimate
+            </a>
+          </div>
+        </div>
+
+      </div>
+      <div class="swiper-pagination bottom-8"></div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================= -->
+  <!-- SECTION 4: KEY ADVANTAGES BANNER (EDIT PROMISES HERE) -->
+  <!-- ================================================================= -->
+  <section class="py-12 bg-gradient-to-r from-brand-green via-emerald-950 to-brand-green border-y border-brand-gold/30">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
+      <div class="p-4 rounded-xl bg-black/40 border border-white/10 hover:border-brand-gold/40 transition">
+        <i class="fa-solid fa-award text-3xl text-brand-gold mb-2"></i>
+        <h4 class="text-sm font-bold text-white uppercase tracking-wider">Premium Quality</h4>
+        <p class="text-xs text-zinc-200 mt-1 font-medium">High-grade materials & finish</p>
+      </div>
+      <div class="p-4 rounded-xl bg-black/40 border border-white/10 hover:border-brand-gold/40 transition">
+        <i class="fa-solid fa-couch text-3xl text-brand-gold mb-2"></i>
+        <h4 class="text-sm font-bold text-white uppercase tracking-wider">Modern Design</h4>
+        <p class="text-xs text-zinc-200 mt-1 font-medium">Contemporary geometry</p>
+      </div>
+      <div class="p-4 rounded-xl bg-black/40 border border-white/10 hover:border-brand-gold/40 transition">
+        <i class="fa-solid fa-tags text-3xl text-brand-gold mb-2"></i>
+        <h4 class="text-sm font-bold text-white uppercase tracking-wider">Affordable Price</h4>
+        <p class="text-xs text-zinc-200 mt-1 font-medium">Budget-friendly packages</p>
+      </div>
+      <div class="p-4 rounded-xl bg-black/40 border border-white/10 hover:border-brand-gold/40 transition">
+        <i class="fa-solid fa-truck-fast text-3xl text-brand-gold mb-2"></i>
+        <h4 class="text-sm font-bold text-white uppercase tracking-wider">Timely Delivery</h4>
+        <p class="text-xs text-zinc-200 mt-1 font-medium">On-schedule execution</p>
+      </div>
+      <div class="p-4 rounded-xl bg-black/40 border border-white/10 hover:border-brand-gold/40 transition col-span-2 md:col-span-1">
+        <i class="fa-solid fa-layer-group text-3xl text-brand-gold mb-2"></i>
+        <h4 class="text-sm font-bold text-white uppercase tracking-wider">Parquet Flooring</h4>
+        <p class="text-xs text-zinc-200 mt-1 font-medium">Durable wooden finishes</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================= -->
+  <!-- SECTION 5: ABOUT COMPANY (CORRECTED TITLE ALIGNMENT & HIGH CONTRAST) -->
+  <!-- ================================================================= -->
+  <section id="about" class="py-28 px-6 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      
+      <!-- Company Bio (Fixed Font Sizes & Line Heights) -->
+      <div class="space-y-6">
+        <span class="text-brand-gold text-xs uppercase tracking-[0.28em] font-bold block">About Our Company</span>
+        
+        <!-- PROPERLY ALIGNED TITLE -->
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-extrabold text-white leading-tight">
+          Green Space <br class="hidden sm:inline" />International Pvt. Ltd.
+        </h2>
+        
+        <!-- HIGH CONTRAST READABLE BODY TEXT -->
+        <p class="text-zinc-100 leading-relaxed font-normal text-base">
+          Based in Pepsicola, Kathmandu, <strong class="text-brand-gold">Green Space International Pvt. Ltd.</strong> is a premier interior design and custom furniture manufacturing company. We specialize in transforming raw residential apartments, private villas, and commercial offices into luxurious, highly functional living spaces.
+        </p>
+        <p class="text-zinc-200 leading-relaxed font-normal text-base">
+          Under the visionary leadership of our founder, <strong class="text-white">Pushkar Baral</strong>, we prioritize structural durability, modern spatial ergonomics, and client-centric pricing across every project in Nepal.
+        </p>
+
+        <!-- Feature List -->
+        <div class="pt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-zinc-800 text-xs font-semibold uppercase tracking-wider text-zinc-200">
+          <div class="flex items-center space-x-3 bg-zinc-900/80 p-3 rounded-lg border border-zinc-800">
+            <i class="fa-solid fa-circle-check text-brand-gold text-base"></i>
+            <span>3D Design & Plan Preview</span>
+          </div>
+          <div class="flex items-center space-x-3 bg-zinc-900/80 p-3 rounded-lg border border-zinc-800">
+            <i class="fa-solid fa-circle-check text-brand-gold text-base"></i>
+            <span>Factory Direct Furniture</span>
+          </div>
+          <div class="flex items-center space-x-3 bg-zinc-900/80 p-3 rounded-lg border border-zinc-800">
+            <i class="fa-solid fa-circle-check text-brand-gold text-base"></i>
+            <span>Turnkey Site Execution</span>
+          </div>
+          <div class="flex items-center space-x-3 bg-zinc-900/80 p-3 rounded-lg border border-zinc-800">
+            <i class="fa-solid fa-circle-check text-brand-gold text-base"></i>
+            <span>Dedicated After-Sales Support</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image Display -->
+      <div class="relative">
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden border border-brand-gold/40 shadow-2xl">
+          <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&q=80&w=1200" alt="Interior Craftsmanship" class="w-full h-full object-cover" />
+        </div>
+        <!-- Owner Card -->
+        <div class="absolute -bottom-8 -left-6 bg-brand-green border border-brand-gold/50 p-6 rounded-2xl max-w-xs shadow-2xl backdrop-blur-lg">
+          <div class="flex items-center space-x-4 mb-2">
+            <div class="w-12 h-12 rounded-full bg-brand-gold text-zinc-950 font-serif font-bold text-xl flex items-center justify-center">
+              PB
+            </div>
+            <div>
+              <h4 class="text-white font-bold text-sm">Pushkar Baral</h4>
+              <p class="text-[11px] text-brand-gold uppercase font-semibold">Owner & Founder</p>
+            </div>
+          </div>
+          <p class="text-xs text-zinc-100 italic leading-relaxed">"We don't just furnish rooms; we build comfortable homes crafted around your personal lifestyle."</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================================================================= -->
+  <!-- SECTION 6: NEW INTERACTIVE 5-STEP DESIGN PROCESS (NEWLY ADDED) -->
+  <!-- ================================================================= -->
+  <section id="process" class="py-28 bg-zinc-900/80 border-t border-zinc-800 px-6">
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-brand-gold text-xs uppercase tracking-[0.28em] font-bold block mb-2">Simple & Transparent</span>
+        <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white">Design Your Home In 5 Steps</h2>
+        <p class="text-zinc-200 text-base mt-4 font-normal">Click each step below to explore how we take your vision from raw floor plan to final keys.</p>
+      </div>
+
+      <!-- Step Navigation Buttons (1 to 5) -->
+      <div class="flex justify-center items-center gap-3 sm:gap-6 mb-12 flex-wrap">
+        <button class="step-btn active px-5 py-3 rounded-2xl font-bold text-sm border-2 border-brand-gold bg-brand-gold text-zinc-950 shadow-lg transition-all duration-300" data-step="1">
+          <span class="text-lg">1</span> <span class="hidden sm:inline ml-2">Meet Designer</span>
+        </button>
+        <button class="step-btn px-5 py-3 rounded-2xl font-bold text-sm border-2 border-zinc-700 bg-zinc-950 text-zinc-300 hover:border-brand-gold transition-all duration-300" data-step="2">
+          <span class="text-lg">2</span> <span class="hidden sm:inline ml-2">3D Layout</span>
+        </button>
+        <button class="step-btn px-5 py-3 rounded-2xl font-bold text-sm border-2 border-zinc-700 bg-zinc-950 text-zinc-300 hover:border-brand-gold transition-all duration-300" data-step="3">
+          <span class="text-lg">3</span> <span class="hidden sm:inline ml-2">Materials</span>
+        </button>
+        <button class="step-btn px-5 py-3 rounded-2xl font-bold text-sm border-2 border-zinc-700 bg-zinc-950 text-zinc-300 hover:border-brand-gold transition-all duration-300" data-step="4">
+          <span class="text-lg">4</span> <span class="hidden sm:inline ml-2">Execution</span>
+        </button>
+        <button class="step-btn px-5 py-3 rounded-2xl font-bold text-sm border-2 border-zinc-700 bg-zinc-950 text-zinc-300 hover:border-brand-gold transition-all duration-300" data-step="5">
+          <span class="text-lg">5</span> <span class="hidden sm:inline ml-2">Handover</span>
+        </button>
+      </div>
+
+      <!-- Dynamic Step Content Display Box -->
+      <div class="bg-brand-card border border-brand-gold/30 rounded-3xl p-8 lg:p-12 max-w-5xl mx-auto shadow-2xl">
+        
+        <!-- Step 1 Content -->
+        <div class="step-content grid grid-cols-1 lg:grid-cols-2 gap-10 items-center" id="step-1">
+          <div>
+            <span class="text-brand-gold text-sm font-mono font-bold block mb-2">[ STEP 01 ]</span>
+            <h3 class="text-2xl sm:text-4xl font-serif font-bold text-white mb-4">Meet Our Lead Designers</h3>
+            <p class="text-zinc-100 text-base leading-relaxed font-normal mb-6">
+              We begin with a personal consultation at our Pepsicola showroom or your project site. We discuss your budget, preferred color palettes, and functional requirements for every room.
+            </p>
+            <ul class="space-y-3 text-sm text-zinc-200 font-medium">
+              <li class="flex items-center"><i class="fa-solid fa-check text-brand-gold mr-3"></i> Free On-Site Measurement</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-brand-gold mr-3"></i> Budget Estimation & Scope Review</li>
+            </ul>
+          </div>
+          <div class="rounded-2xl overflow-hidden border border-zinc-800 aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1000" alt="Meet Designer" class="w-full h-full object-cover" />
+          </div>
+        </div>
+
+        <!-- Step 2 Content -->
+        <div class="step-content hidden grid grid-cols-1 lg:grid-cols-2 gap-10 items-center" id="step-2">
+          <div>
+            <span class="text-brand-gold text-sm font-mono font-bold block mb-2">[ STEP 02 ]</span>
+            <h3 class="text-2xl sm:text-4xl font-serif font-bold text-white mb-4">Photorealistic 3D Design</h3>
+            <p class="text-zinc-100 text-base leading-relaxed font-normal mb-6">
+              Our architects generate detailed 3D renders so you can visualize lighting, color schemes, and custom furniture placement before manufacturing begins.
+            </p>
+            <ul class="space-y-3 text-sm text-zinc-200 font-medium">
+              <li class="flex items-center"><i class="fa-solid fa-check text-brand-gold mr-3"></i> 360-Degree Spatial Visualization</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-brand-gold mr-3"></i> Color & Finish Revisions</li>
+            </ul>
+          </div>
+          <div class="rounded-2xl overflow-hidden border border-zinc-800 aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1000" alt="3D Design" class="w-full h-full object-cover" />
+          </div>
+        </div>
+
+        <!-- Step 3 Content -->
+        <div class="step-content hidden grid grid-cols-1 lg:grid-cols-2 gap-10 items-center" id="step-3">
+          <div>
+            <span class="text-brand-gold text-sm font-mono font-bold block mb-2">[ STEP 03 ]</span>
+            <h3 class="text-2xl sm:text-4xl font-serif font-bold text-white mb-4">Material & Hardware Selection</h3>
+            <p class="text-zinc-100 text-base leading-relaxed font-normal mb-6">
+              Choose from premium laminates, acrylics, parquet wood samples, and soft-close German hardware at our showroom.
+            </p>
+            <ul class="space-y-3 text-sm text-zinc-200 font-medium">
+              <li class="flex items-center"><i class="fa-solid fa-check text-brand-gold mr-3"></i> Scratch & Moisture Resistant Boards</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-brand-gold mr-3"></i> Transparent Material Quotation</li>
+            </ul>
+          </div>
+          <div class="rounded-2xl overflow-hidden border border-zinc-800 aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=1000" alt="Materials" class="w-full h-full object-cover" />
+          </div>
+        </div>
+
+        <!-- Step 4 Content -->
+        <div class="step-content hidden grid grid-cols-1 lg:grid-cols-2 gap-10 items-center" id="step-4">
+          <div>
+            <span class="text-brand-gold text-sm font-mono font-bold block mb-2">[ STEP 04 ]</span>
+            <h3 class="text-2xl sm:text-4xl font-serif font-bold text-white mb-4">Precision Manufacturing & Site Execution</h3>
+            <p class="text-zinc-100 text-base leading-relaxed font-normal mb-6">
+              Your modular cabinets and furniture units are precision-cut in our factory and assembled on-site by certified master carpenters.
+            </p>
+            <ul class="space-y-3 text-sm text-zinc-200 font-medium">
+              <li class="flex items-center"><i class="fa-solid fa-check text-brand-gold mr-3"></i> Strict Quality Inspections</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-brand-gold mr-3"></i> On-Schedule Installation</li>
+            </ul>
+          </div>
+          <div class="rounded-2xl overflow-hidden border border-zinc-800 aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&q=80&w=1000" alt="Execution" class="w-full h-full object-cover" />
+          </div>
+        </div>
+
+        <!-- Step 5 Content -->
+        <div class="step-content hidden grid grid-cols-1 lg:grid-cols-2 gap-10 items-center" id="step-5">
+          <div>
+            <span class="text-brand-gold text-sm font-mono font-bold block mb-2">[ STEP 05 ]</span>
+            <h3 class="text-2xl sm:text-4xl font-serif font-bold text-white mb-4">Final Inspection & Key Handover</h3>
+            <p class="text-zinc-100 text-base leading-relaxed font-normal mb-6">
+              We perform deep cleaning, final hardware adjustments, and hand over your fully finished, ready-to-live dream home.
+            </p>
+            <ul class="space-y-3 text-sm text-zinc-200 font-medium">
+              <li class="flex items-center"><i class="fa-solid fa-check text-brand-gold mr-3"></i> Turnkey Clean Delivery</li>
+              <li class="flex items-center"><i class="fa-solid fa-check text-brand-gold mr-3"></i> Post-Installation Warranty</li>
+            </ul>
+          </div>
+          <div class="rounded-2xl overflow-hidden border border-zinc-800 aspect-[4/3]">
+            <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80&w=1000" alt="Handover" class="w-full h-full object-cover" />
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================================================================= -->
+  <!-- SECTION 7: CORE SPECIALTIES (EDIT PRODUCT CARDS HERE) -->
+  <!-- ================================================================= -->
+  <section id="services" class="py-28 px-6 max-w-7xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-brand-gold text-xs uppercase tracking-[0.28em] font-bold block">Our Craftsmanship</span>
+      <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white mt-2">Specialized Interior Solutions</h2>
+      <p class="text-zinc-200 text-base mt-4 font-normal">Custom manufacturing engineered for homes in Kathmandu Valley.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Card 1: Modular Kitchen -->
+      <div class="hover-link group rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-brand-gold/60 overflow-hidden transition-all duration-300 hover:-translate-y-2">
+        <div class="aspect-video overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=800" alt="Modular Kitchen" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-serif font-bold text-white group-hover:text-brand-gold transition">Modular Kitchen</h3>
+          <p class="text-zinc-200 text-sm font-normal mt-2 leading-relaxed">Acrylic & PVC moisture-proof cabinets, pull-out baskets, and granite tops.</p>
+        </div>
+      </div>
+
+      <!-- Card 2: Beds & Master Suites -->
+      <div class="hover-link group rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-brand-gold/60 overflow-hidden transition-all duration-300 hover:-translate-y-2">
+        <div class="aspect-video overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&q=80&w=800" alt="Beds" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-serif font-bold text-white group-hover:text-brand-gold transition">Beds & Master Suites</h3>
+          <p class="text-zinc-200 text-sm font-normal mt-2 leading-relaxed">Hydraulic storage beds, plush headboards, and integrated side tables.</p>
+        </div>
+      </div>
+
+      <!-- Card 3: Custom Wardrobes -->
+      <div class="hover-link group rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-brand-gold/60 overflow-hidden transition-all duration-300 hover:-translate-y-2">
+        <div class="aspect-video overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&q=80&w=800" alt="Wardrobes" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-serif font-bold text-white group-hover:text-brand-gold transition">Custom Wardrobes</h3>
+          <p class="text-zinc-200 text-sm font-normal mt-2 leading-relaxed">Sliding glass wardrobes, walk-in closets, and modular internal organizers.</p>
+        </div>
+      </div>
+
+      <!-- Card 4: TV Cabinets -->
+      <div class="hover-link group rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-brand-gold/60 overflow-hidden transition-all duration-300 hover:-translate-y-2">
+        <div class="aspect-video overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1593696140826-c58b021acf8b?auto=format&fit=crop&q=80&w=800" alt="TV Cabinets" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-serif font-bold text-white group-hover:text-brand-gold transition">Modern TV Cabinets</h3>
+          <p class="text-zinc-200 text-sm font-normal mt-2 leading-relaxed">Acoustic wall louvers, LED-backlit marble panels, and floating consoles.</p>
+        </div>
+      </div>
+
+      <!-- Card 5: False Ceiling -->
+      <div class="hover-link group rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-brand-gold/60 overflow-hidden transition-all duration-300 hover:-translate-y-2">
+        <div class="aspect-video overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800" alt="False Ceiling" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-serif font-bold text-white group-hover:text-brand-gold transition">False Ceiling & Lighting</h3>
+          <p class="text-zinc-200 text-sm font-normal mt-2 leading-relaxed">Gypsum cove ceilings, profile lighting, and decorative wooden rafters.</p>
+        </div>
+      </div>
+
+      <!-- Card 6: Parquet Flooring -->
+      <div class="hover-link group rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-brand-gold/60 overflow-hidden transition-all duration-300 hover:-translate-y-2">
+        <div class="aspect-video overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&q=80&w=800" alt="Parquet Flooring" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-serif font-bold text-white group-hover:text-brand-gold transition">Parquet & Wooden Flooring</h3>
+          <p class="text-zinc-200 text-sm font-normal mt-2 leading-relaxed">Waterproof laminate parquet, solid wood planking, and SPC flooring.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================================================================= -->
+  <!-- SECTION 8: BEFORE / AFTER RENOVATION COMPARISON SLIDER -->
+  <!-- ================================================================= -->
+  <section id="transformations" class="py-28 bg-zinc-900/60 border-y border-zinc-800 px-6 text-center">
+    <div class="max-w-4xl mx-auto">
+      <span class="text-brand-gold text-xs uppercase tracking-[0.28em] font-bold block mb-2">Visual Proof</span>
+      <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white mb-6">Drag To See Transformation</h2>
+      <p class="text-zinc-200 text-base font-normal mb-12 max-w-xl mx-auto">Slide across to view how Green Space International elevates a plain space into a modern sanctuary.</p>
+
+      <div class="rounded-3xl overflow-hidden border border-brand-gold/40 shadow-2xl max-w-3xl mx-auto">
+        <img-comparison-slider class="w-full focus:outline-none">
+          <img slot="first" src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=1200" alt="Before Work" class="w-full h-auto" />
+          <img slot="second" src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1200" alt="After Green Space Work" class="w-full h-auto" />
+        </img-comparison-slider>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================= -->
+  <!-- SECTION 9: LEADERSHIP & TEAM (EDIT STAFF HERE) -->
+  <!-- ================================================================= -->
+  <section id="team" class="py-28 px-6 max-w-7xl mx-auto text-center">
+    <span class="text-brand-gold text-xs uppercase tracking-[0.28em] font-bold block mb-2">Leadership</span>
+    <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white mb-16">Meet Our Team</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Founder & Owner -->
+      <div class="p-8 rounded-3xl bg-zinc-900 border border-brand-gold/50 text-center shadow-xl">
+        <div class="w-24 h-24 rounded-full bg-gradient-to-br from-brand-gold to-amber-600 text-zinc-950 font-serif text-3xl font-extrabold flex items-center justify-center mx-auto mb-6 shadow-xl">
+          PB
+        </div>
+        <h3 class="text-2xl font-serif font-bold text-white">Pushkar Baral</h3>
+        <p class="text-xs uppercase tracking-widest text-brand-gold font-bold mt-1">Owner & Managing Director</p>
+        <p class="text-zinc-200 text-sm mt-4 font-normal leading-relaxed">Directing design innovation, material quality, and customer satisfaction across Nepal.</p>
+      </div>
+
+      <!-- Lead Architect Placeholder -->
+      <div class="p-8 rounded-3xl bg-zinc-900/60 border border-zinc-800 text-center">
+        <div class="w-24 h-24 rounded-full bg-zinc-800 text-brand-gold font-serif text-3xl flex items-center justify-center mx-auto mb-6">
+          <i class="fa-solid fa-compass-drafting"></i>
+        </div>
+        <h3 class="text-2xl font-serif font-bold text-white">3D Design Dept.</h3>
+        <p class="text-xs uppercase tracking-widest text-zinc-300 font-bold mt-1">Architectural Layouts</p>
+        <p class="text-zinc-200 text-sm mt-4 font-normal leading-relaxed">Creating photorealistic 3D plans tailored to room dimensions.</p>
+      </div>
+
+      <!-- Execution Craftsmen Placeholder -->
+      <div class="p-8 rounded-3xl bg-zinc-900/60 border border-zinc-800 text-center">
+        <div class="w-24 h-24 rounded-full bg-zinc-800 text-brand-gold font-serif text-3xl flex items-center justify-center mx-auto mb-6">
+          <i class="fa-solid fa-hammer"></i>
+        </div>
+        <h3 class="text-2xl font-serif font-bold text-white">Master Craftsmen</h3>
+        <p class="text-xs uppercase tracking-widest text-zinc-300 font-bold mt-1">On-Site Assembly</p>
+        <p class="text-zinc-200 text-sm mt-4 font-normal leading-relaxed">Precision carpentry, parquet fitting, and hardware installation.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================================================================= -->
+  <!-- SECTION 10: CONTACT & INQUIRY FORM (EDIT PHONE & FORM HERE) -->
+  <!-- ================================================================= -->
+  <section id="contact" class="py-28 bg-zinc-900/80 border-t border-zinc-800 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+      
+      <!-- Contact Info -->
+      <div>
+        <span class="text-brand-gold text-xs uppercase tracking-[0.28em] font-bold block mb-2">Get In Touch</span>
+        <h2 class="text-3xl sm:text-5xl font-serif font-bold text-white mb-6">Visit Our Showroom</h2>
+        <p class="text-zinc-200 text-base font-normal mb-8">Discuss your home plan with Pushkar Baral or request an on-site estimation team.</p>
+
+        <div class="space-y-6 text-sm text-zinc-100">
+          <div class="flex items-start space-x-4">
+            <div class="w-12 h-12 rounded-xl bg-brand-green border border-brand-gold/40 flex items-center justify-center shrink-0">
+              <i class="fa-solid fa-location-dot text-brand-gold text-lg"></i>
+            </div>
+            <div>
+              <h5 class="text-white font-bold text-base">Office & Showroom Address</h5>
+              <p class="text-zinc-200 text-sm mt-0.5">Pepsicola, Kathmandu - 32, Nepal</p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div class="w-12 h-12 rounded-xl bg-brand-green border border-brand-gold/40 flex items-center justify-center shrink-0">
+              <i class="fa-solid fa-phone text-brand-gold text-lg"></i>
+            </div>
+            <div>
+              <h5 class="text-white font-bold text-base">Phone & WhatsApp</h5>
+              <p class="text-zinc-200 text-sm mt-0.5">+977 9851227074</p>
+            </div>
+          </div>
+
+          <div class="flex items-start space-x-4">
+            <div class="w-12 h-12 rounded-xl bg-brand-green border border-brand-gold/40 flex items-center justify-center shrink-0">
+              <i class="fa-solid fa-user-tie text-brand-gold text-lg"></i>
+            </div>
+            <div>
+              <h5 class="text-white font-bold text-base">Primary Contact Person</h5>
+              <p class="text-zinc-200 text-sm mt-0.5">Pushkar Baral (Owner)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Web3Forms Free Serverless Contact Form -->
+      <div class="bg-zinc-950 border border-brand-gold/30 p-8 sm:p-10 rounded-3xl shadow-2xl">
+        <h3 class="text-2xl font-serif font-bold text-white mb-6">Send A Direct Inquiry</h3>
+        <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+          
+          <div>
+            <label class="block text-xs font-bold uppercase text-zinc-300 mb-1">Your Full Name</label>
+            <input type="text" name="name" required placeholder="John Doe" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-3.5 text-sm text-white focus:border-brand-gold focus:outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-zinc-300 mb-1">Phone Number</label>
+            <input type="tel" name="phone" required placeholder="+977 98XXXXXXX" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-3.5 text-sm text-white focus:border-brand-gold focus:outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-zinc-300 mb-1">Select Required Service</label>
+            <select name="service" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-3.5 text-sm text-white focus:border-brand-gold focus:outline-none">
+              <option>Modular Kitchen</option>
+              <option>Beds & Wardrobes</option>
+              <option>TV Cabinet & Ceiling</option>
+              <option>Parquet Flooring</option>
+              <option>Complete Home Interior</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-zinc-300 mb-1">Project Details / Message</label>
+            <textarea name="message" rows="3" placeholder="Tell us about your room size..." class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-3.5 text-sm text-white focus:border-brand-gold focus:outline-none"></textarea>
+          </div>
+          <button type="submit" class="hover-link w-full py-4 bg-gradient-to-r from-brand-gold to-amber-500 text-zinc-950 font-bold text-xs uppercase tracking-widest rounded-xl hover:brightness-110 transition shadow-xl">
+            Submit Inquiry Now
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/9779851227074?text=Hello%20Green%20Space%20International,%20I%20want%20to%20inquire%20about%20interior%20design%20services." 
+     target="_blank" 
+     class="hover-link fixed bottom-6 right-6 z-50 w-14 h-14 bg-emerald-500 text-white rounded-full flex items-center justify-center text-3xl shadow-2xl hover:scale-110 transition-transform">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+
+  <!-- Footer -->
+  <footer class="py-10 bg-zinc-950 border-t border-zinc-900 text-zinc-300 text-xs text-center">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4 font-medium">
+      <p>© 2026 Green Space International Pvt. Ltd. All rights reserved.</p>
+      <p>Pepsicola, Kathmandu - 32 | Phone: +977 9851227074</p>
+    </div>
+  </footer>
+
+
+  <!-- Scripts: Swiper, Comparison Slider & Interactive JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
+  
+  <script>
+    // 1. Glowing Magnetic Cursor Logic
+    const dot = document.getElementById('cursor-dot');
+    const outline = document.getElementById('cursor-outline');
+
+    window.addEventListener('mousemove', (e) => {
+      dot.style.left = `${e.clientX}px`;
+      dot.style.top = `${e.clientY}px`;
+      gsap.to(outline, { x: e.clientX, y: e.clientY, duration: 0.18, ease: 'power2.out' });
+    });
+
+    document.querySelectorAll('.hover-link, button, a').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-active'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
+    });
+
+    // 2. Swiper Hero Slider Initialization
+    new Swiper('.heroSwiper', {
+      loop: true,
+      speed: 1000,
+      autoplay: { delay: 4500, disableOnInteraction: false },
+      pagination: { el: '.swiper-pagination', clickable: true },
+    });
+
+    // 3. 5-Step Process Tab Switcher
+    const stepBtns = document.querySelectorAll('.step-btn');
+    const stepContents = document.querySelectorAll('.step-content');
+
+    stepBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const stepNum = btn.getAttribute('data-step');
+
+        // Reset button active styles
+        stepBtns.forEach(b => {
+          b.classList.remove('bg-brand-gold', 'text-zinc-950', 'border-brand-gold', 'active');
+          b.classList.add('bg-zinc-950', 'text-zinc-300', 'border-zinc-700');
+        });
+
+        // Set clicked button active style
+        btn.classList.add('bg-brand-gold', 'text-zinc-950', 'border-brand-gold', 'active');
+        btn.classList.remove('bg-zinc-950', 'text-zinc-300', 'border-zinc-700');
+
+        // Toggle step contents
+        stepContents.forEach(content => {
+          if (content.id === `step-${stepNum}`) {
+            content.classList.remove('hidden');
+          } else {
+            content.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
